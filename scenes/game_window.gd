@@ -5,7 +5,8 @@ var MouseTracker: Line2D
 var PlayerSprite: Sprite
 var Crosshair: Sprite
 var Player: Area2D
-var BulletSprite
+var BulletSprite: Resource
+var BulletScript: Resource
 
 
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 	Player = get_node("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	BulletSprite = load("res://assets/bullet.png")
+	BulletScript = load("res://scripts/bullet.gd")
 	
 
 
@@ -35,6 +37,6 @@ func create_bullet():
 	var sprite: Sprite = Sprite.new()
 	sprite.texture = BulletSprite
 	bullet.add_child(sprite)
-	bullet.set_script(load("res://scripts/bullet.gd"))
+	bullet.set_script(BulletScript)
 	get_node(".").add_child(bullet)
 	bullet.set_process(true)
