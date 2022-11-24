@@ -35,5 +35,6 @@ func create_bullet():
 	var sprite: Sprite = Sprite.new()
 	sprite.texture = BulletSprite
 	bullet.add_child(sprite)
-	bullet.set_script(load("res://scripts/bulllet.gd"))
+	bullet.set_script(load("res://scripts/bullet.gd"))
 	get_node(".").add_child(bullet)
+	bullet.set_process(true)
