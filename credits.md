@@ -9,3 +9,4 @@ Artwork made in [Aseprite](https://www.aseprite.org/)
 
 UI and buttons adapted from [*Pixel Button Prompts!*](https://retrocademedia.itch.io/buttonprompts4) by Retrocate Media
 Font from [*Humble Fonts Gold*](https://somepx.itch.io/humble-fonts-gold) by somepx
+Sound effects from [*Chiptone*](https://sfbgames.itch.io/chiptone) by SFBGames
