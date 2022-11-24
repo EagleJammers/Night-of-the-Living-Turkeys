@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/menu_controls/button_exit.png" type="Texture" id=7]
 [ext_resource path="res://assets/menu_controls/button_options_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/menu_controls/button_exit_pressed.png" type="Texture" id=9]
-[ext_resource path="res://scenes/title_screen.gd" type="Script" id=10]
+[ext_resource path="res://scripts/title_screen.gd" type="Script" id=10]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
