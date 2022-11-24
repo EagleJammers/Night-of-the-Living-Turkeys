@@ -1,7 +1,7 @@
-extends Node2D
+extends KinematicBody2D
 
 
-var MouseTracker: Line2D
+var MouseLine: Line2D
 var PlayerSprite: Sprite
 var Crosshair: Sprite
 var Player: Area2D
@@ -10,27 +10,19 @@ var BulletScript: Resource
 
 
 func _ready():
-	MouseTracker = get_node("Player/Line2D")
-	PlayerSprite = get_node("Player/PlayerSprite")
-	Crosshair = get_node("Player/Crosshair")
-	Player = get_node("Player")
+	MouseLine = get_node("MouseLine")
+	PlayerSprite = get_node("PlayerSprite")
+	Crosshair = get_node("Crosshair")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	BulletSprite = load("res://assets/bullet.png")
 	BulletScript = load("res://scripts/bullet.gd")
-	
-
 
 func _process(delta):
-	MouseTracker.set_point_position(1, MouseTracker.get_local_mouse_position())
+	MouseLine.set_point_position(1, MouseLine.get_local_mouse_position())
 	PlayerSprite.rotate(PlayerSprite.get_local_mouse_position().angle())
 	Crosshair.position = Crosshair.get_global_mouse_position()
 	if(Input.is_action_pressed("ui_select")):
 		create_bullet()
-
-
-func _on_Control_resized():
-	get_node(".").rect_size = get_node(".").get_viewport().size
-	print(get_node(".").get_viewport().size)
 
 func create_bullet():
 	var bullet: KinematicBody2D = KinematicBody2D.new()
@@ -38,5 +30,5 @@ func create_bullet():
 	sprite.texture = BulletSprite
 	bullet.add_child(sprite)
 	bullet.set_script(BulletScript)
-	get_node(".").add_child(bullet)
+	add_child(bullet)
 	bullet.set_process(true)
