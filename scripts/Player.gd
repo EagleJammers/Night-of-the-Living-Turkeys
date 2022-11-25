@@ -18,6 +18,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	BulletSprite = load("res://assets/bullet.png")
 	BulletScript = load("res://scripts/bullet.gd")
+	EnemySprite = load("res://assets/evil_turkey.png")
+	EnemyScript = load("res://scripts/enemy.gd")
 
 func _process(delta):
 	MouseLine.set_point_position(1, MouseLine.get_local_mouse_position())
@@ -48,3 +50,4 @@ func spawn_enemy():
 	enemy.set_script(EnemyScript)
 	get_node(".").add_child(enemy)
 	enemy.set_process(true)
+	enemy.set_player(self)
