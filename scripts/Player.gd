@@ -9,6 +9,9 @@ var BulletSprite: Resource
 var BulletScript: Resource
 var EnemySprite: Resource
 var EnemyScript: Resource
+var directional_input = Vector2.ZERO
+
+const speed = 200
 
 
 func _ready():
@@ -27,6 +30,12 @@ func _process(delta):
 	Crosshair.position = Crosshair.get_global_mouse_position()
 	if(Input.is_action_pressed("ui_select")):
 		create_bullet()
+		create_enemy()
+	
+	# Block for movement	
+	directional_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	directional_input.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
+	move_and_slide(directional_input * speed)
 
 func _on_Control_resized():
 	get_node(".").rect_size = get_node(".").get_viewport().size
@@ -42,7 +51,7 @@ func create_bullet():
 	bullet.set_process(true)
 
 
-func spawn_enemy():
+func create_enemy():
 	var enemy: KinematicBody2D = KinematicBody2D.new()
 	var sprite: Sprite = Sprite.new()
 	sprite.texture = EnemySprite
